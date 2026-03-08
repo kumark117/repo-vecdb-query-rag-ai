@@ -182,7 +182,7 @@ export default function Home() {
 
         <pre
           style={{
-            background: "yellow",
+            background: "skyblue",
             color: "black",
             padding: 20,
             whiteSpace: "pre-wrap",
