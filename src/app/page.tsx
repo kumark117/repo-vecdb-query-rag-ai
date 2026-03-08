@@ -1,6 +1,10 @@
 "use client"
 
 import { useState } from "react"
+//import { log, getLogs } from "../lib/logger";
+//import { useRouter } from "next/navigation";
+//import router from "next/router";
+
 
 export default function Home() {
 
@@ -10,10 +14,12 @@ export default function Home() {
   const [logs, setLogs] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
 
+  
   function log(msg: string) {
     const time = new Date().toLocaleTimeString()
     setLogs(prev => [...prev, `[${time}] ${msg}`])
   }
+
 
   async function indexRepo() {
 
@@ -144,6 +150,21 @@ export default function Home() {
         >
           Ask
         </button>
+
+        <button
+        onClick={() => window.location.href = "/how-it-works"}
+        style={{
+          padding: "10px 18px",
+          background: "#0070f3",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          marginTop: "20px"
+        }}
+      >
+        How It Works ?!
+      </button>
 
       </div>
 

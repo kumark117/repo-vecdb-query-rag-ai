@@ -9,3 +9,9 @@ export function logEvent(event:string){
 
   sessionStorage.setItem("logs",JSON.stringify(logs))
 }
+
+export const log = (event: string) => logEvent
+
+export function getLogs() { const retLogs = (sessionStorage.getItem("logs") || "..."); 
+return typeof retLogs === "string" ? JSON.parse(retLogs) : retLogs
+}
