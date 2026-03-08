@@ -1,0 +1,25 @@
+      {/* Repo input */}
+
+      <div style={{ marginTop: 30 }}>
+        <input
+          style={{ width: 500, padding: 10 }}
+          placeholder="GitHub repo URL"
+          value={repoUrl}
+          onChange={(e) => setRepoUrl(e.target.value)}
+          disabled={true}
+        />
+
+        <button
+          style={{
+            marginLeft: 10,
+            padding: 10,
+            background: "blue",
+            color: "white"
+          }}
+          onClick={indexRepo}
+          disabled={loading}
+        >
+          Index Repo
+        </button>
+
+      </div>

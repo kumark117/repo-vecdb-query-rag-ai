@@ -25,7 +25,7 @@ export default function QueryPane(){
     <div style={{padding:"20px"}}>
 
       <h2 style={{color:"green"}}>
-        Ask Questions About the Repo
+        Ask Questions About the Repo (Index in PineCone Vector DB, generated offline)
       </h2>
 
       <div style={{marginTop:"15px"}}>

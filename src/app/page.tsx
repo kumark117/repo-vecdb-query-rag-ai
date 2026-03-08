@@ -4,7 +4,7 @@ import { useState } from "react"
 
 export default function Home() {
 
-  const [repoUrl, setRepoUrl] = useState("")
+  const [repoUrl, setRepoUrl] = useState("https://github.com/kumark117/repo-vecdb-query-rag-ai")
   const [question, setQuestion] = useState("")
   const [answer, setAnswer] = useState("")
   const [logs, setLogs] = useState<string[]>([])
@@ -104,38 +104,22 @@ export default function Home() {
     <div style={{ padding: 40, fontFamily: "sans-serif" }}>
 
       <h1 style={{ color: "green" }}>
-        Next.js Repo RAG Explorer
+        Next.js Repo <i>RAG</i> (with openAI) Explorer, hosted on Vercel
       </h1>
+<div style={{marginBottom:"20px", fontSize:"14px"}}>
+  AI Repo Search — Retrieval Augmented Generation Demo
+  <br />
+  Next.js + Typescript + Pinecone + OpenAI, hosted on Vercel - Edge Functions (serverless)
+</div>
+<div style={{marginBottom:"20px", fontSize:"22px"}}>
+  <div><b>🔧 Index (offline)</b>:
+    📂 Repo → ✂️ Chunk → 🧠 Embed → 📦 Store → 🗂 Pinecone
+  </div>
 
-      <p>
-        Index a GitHub repository and ask questions about the code.
-      </p>
-
-      {/* Repo input */}
-
-      <div style={{ marginTop: 30 }}>
-
-        <input
-          style={{ width: 500, padding: 10 }}
-          placeholder="GitHub repo URL"
-          value={repoUrl}
-          onChange={(e) => setRepoUrl(e.target.value)}
-        />
-
-        <button
-          style={{
-            marginLeft: 10,
-            padding: 10,
-            background: "blue",
-            color: "white"
-          }}
-          onClick={indexRepo}
-          disabled={loading}
-        >
-          Index Repo
-        </button>
-
-      </div>
+  <div><b>🔎 Query (live RAG)</b>:
+    ❓ Query → 🧠 Embed → 🔍 Search → 📑 Context → 🤖 LLM → 💬 Answer
+  </div>
+</div>
 
       {/* Query input */}
 

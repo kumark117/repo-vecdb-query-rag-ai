@@ -24,7 +24,7 @@ export default function LogPane(){
     }}>
 
       <h2 style={{color:"green"}}>
-        Serverless Instances' Log
+        Log of Serverless Instance Functions, saved in sessionStorage
       </h2>
 
       <div style={{marginTop:"15px"}}>
