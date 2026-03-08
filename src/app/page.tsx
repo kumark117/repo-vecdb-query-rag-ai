@@ -109,25 +109,25 @@ export default function Home() {
 <div style={{marginBottom:"20px", fontSize:"14px"}}>
   AI Repo Search — Retrieval Augmented Generation Demo
   <br />
-  Next.js + Typescript + Pinecone + OpenAI, hosted on Vercel - Edge Functions (serverless)
+  Next.js + Typescript + Pinecone + OpenAI, hosted on Vercel (serverless)
 </div>
 <div style={{marginBottom:"20px", fontSize:"22px"}}>
   <div><b>🔧 Index (offline)</b>:
-    📂 Repo → ✂️ Chunk → 🧠 Embed → 📦 Store → 🗂 Pinecone
+    📂 Repo → ✂️ Chunk → 🧠 Embed → 📦 Store → 🗂 PineCone VectorDB
   </div>
 
   <div><b>🔎 Query (live RAG)</b>:
-    ❓ Query → 🧠 Embed → 🔍 Search → 📑 Context → 🤖 LLM → 💬 Answer
+    ❓ Query → 🧠 Embed → 🔍 Search → 📑 Context → 🤖 openAI LLM → 💬 Answer
   </div>
 </div>
-
+<br/>
       {/* Query input */}
 
       <div style={{ marginTop: 30 }}>
 
         <input
           style={{ width: 500, padding: 10 }}
-          placeholder="Ask a question about the repo"
+          placeholder="Ask a question about the repo - Offline-Indexed in PineCone vector DB"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
