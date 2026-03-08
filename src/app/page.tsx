@@ -104,20 +104,20 @@ export default function Home() {
     <div style={{ padding: 40, fontFamily: "sans-serif" }}>
 
       <h1 style={{ color: "green" }}>
-        Next.js Repo <i>RAG</i> (with openAI) Explorer, hosted on Vercel
+        Next.js Repo <i>RAG</i> (→ OpenAI) Explorer, hosted on Vercel
       </h1>
 <div style={{marginBottom:"20px", fontSize:"14px"}}>
   AI Repo Search — Retrieval Augmented Generation Demo
   <br />
-  Next.js + Typescript + Pinecone + OpenAI, hosted on Vercel (serverless)
+  Next.js + Typescript (PineCone VectorDB, OpenAI) hosted on Vercel (serverless)
 </div>
-<div style={{marginBottom:"20px", fontSize:"22px"}}>
+<div style={{marginBottom:"20px", fontSize:"20px"}}>
   <div><b>🔧 Index (offline)</b>:
-    📂 Repo → ✂️ Chunk → 🧠 Embed → 📦 Store → 🗂 PineCone VectorDB
+    📂 Repo → ✂️ Chunk → 🧠 Embed → 📦 Store → 🗂 PineCone
   </div>
 
   <div><b>🔎 Query (live RAG)</b>:
-    ❓ Query → 🧠 Embed → 🔍 Search → 📑 Context → 🤖 openAI LLM → 💬 Answer
+    ❓ Query → 🧠 Embed → 🔍 Search → 📑 Context → 🤖 OpenAI LLM → 💬 Answer
   </div>
 </div>
 <br/>
