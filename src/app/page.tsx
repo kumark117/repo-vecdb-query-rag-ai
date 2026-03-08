@@ -1,66 +1,209 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+
+import { useState } from "react"
 
 export default function Home() {
+
+  const [repoUrl, setRepoUrl] = useState("")
+  const [question, setQuestion] = useState("")
+  const [answer, setAnswer] = useState("")
+  const [logs, setLogs] = useState<string[]>([])
+  const [loading, setLoading] = useState(false)
+
+  function log(msg: string) {
+    const time = new Date().toLocaleTimeString()
+    setLogs(prev => [...prev, `[${time}] ${msg}`])
+  }
+
+  async function indexRepo() {
+
+    if (!repoUrl) return
+
+    log("Starting repo indexing...")
+
+    setLoading(true)
+
+    try {
+
+      const res = await fetch("/api/indexRepo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          repo: repoUrl
+        })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        log("Indexing failed")
+        console.error(data)
+      } else {
+        log("Repo indexed successfully")
+      }
+
+    } catch (err) {
+
+      log("Indexing error")
+      console.error(err)
+
+    }
+
+    setLoading(false)
+  }
+
+  async function askQuestion() {
+
+    if (!question) return
+
+    log("Sending query to RAG...")
+
+    setLoading(true)
+
+    try {
+
+      const res = await fetch("/api/query", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          question
+        })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+
+        log("Query failed")
+        console.error(data)
+
+      } else {
+
+        setAnswer(data.answer)
+
+        log("Answer received")
+
+      }
+
+    } catch (err) {
+
+      log("Query error")
+      console.error(err)
+
+    }
+
+    setLoading(false)
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+
+    <div style={{ padding: 40, fontFamily: "sans-serif" }}>
+
+      <h1 style={{ color: "green" }}>
+        Next.js Repo RAG Explorer
+      </h1>
+
+      <p>
+        Index a GitHub repository and ask questions about the code.
+      </p>
+
+      {/* Repo input */}
+
+      <div style={{ marginTop: 30 }}>
+
+        <input
+          style={{ width: 500, padding: 10 }}
+          placeholder="GitHub repo URL"
+          value={repoUrl}
+          onChange={(e) => setRepoUrl(e.target.value)}
         />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+
+        <button
+          style={{
+            marginLeft: 10,
+            padding: 10,
+            background: "blue",
+            color: "white"
+          }}
+          onClick={indexRepo}
+          disabled={loading}
+        >
+          Index Repo
+        </button>
+
+      </div>
+
+      {/* Query input */}
+
+      <div style={{ marginTop: 30 }}>
+
+        <input
+          style={{ width: 500, padding: 10 }}
+          placeholder="Ask a question about the repo"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+        />
+
+        <button
+          style={{
+            marginLeft: 10,
+            padding: 10,
+            background: "blue",
+            color: "white"
+          }}
+          onClick={askQuestion}
+          disabled={loading}
+        >
+          Ask
+        </button>
+
+      </div>
+
+      {/* Answer pane */}
+
+      <div style={{ marginTop: 40 }}>
+
+        <h3 style={{ color: "green" }}>
+          Answer
+        </h3>
+
+        <pre
+          style={{
+            background: "#f5f5f5",
+            padding: 20,
+            whiteSpace: "pre-wrap"
+          }}
+        >
+          {answer}
+        </pre>
+
+      </div>
+
+      {/* Logs pane */}
+
+      <div style={{ marginTop: 40 }}>
+
+        <h3 style={{ color: "green" }}>
+          Serverless Instances' Log
+        </h3>
+
+        <pre
+          style={{
+            background: "#eee",
+            padding: 20,
+            height: 200,
+            overflow: "auto"
+          }}
+        >
+          {logs.join("\n")}
+        </pre>
+
+      </div>
+
     </div>
-  );
+  )
 }
