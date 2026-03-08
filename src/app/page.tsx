@@ -110,13 +110,14 @@ export default function Home() {
     <div style={{ padding: 40, fontFamily: "sans-serif" }}>
 
       <h1 style={{ color: "green" }}>
-        Next.js Repo <i>RAG</i> (→ OpenAI) Explorer, hosted on Vercel
+        Nextjs Repo <i>RAG</i> (→ OpenAI) Explorer, hosted on Vercel
       </h1>
-<div style={{marginBottom:"20px", fontSize:"14px"}}>
+<div style={{marginBottom:"20px", fontSize:"18px"}}>
   AI Repo Search — Retrieval Augmented Generation Demo
   <br />
-  Next.js + Typescript (PineCone VectorDB, OpenAI) hosted on Vercel (serverless)
+  .Nextjs .Typescript .PineCone VectorDB .OpenAI - hosted on Vercel (serverless)
 </div>
+<br/>
 <div style={{marginBottom:"20px", fontSize:"20px"}}>
   <div><b>🔧 Index (offline)</b>:
     📂 Repo → ✂️ Chunk → 🧠 Embed → 📦 Store → 🗂 PineCone
@@ -137,20 +138,23 @@ export default function Home() {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
-
+&nbsp; &nbsp; &nbsp;
         <button
           style={{
-            marginLeft: 10,
-            padding: 10,
-            background: "blue",
-            color: "white"
+          padding: "10px 18px",
+          background: "#0070f3",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          marginTop: "20px"
           }}
           onClick={askQuestion}
           disabled={loading}
         >
           Ask
         </button>
-
+&nbsp; &nbsp; &nbsp;
         <button
         onClick={() => window.location.href = "/how-it-works"}
         style={{
@@ -178,9 +182,12 @@ export default function Home() {
 
         <pre
           style={{
-            background: "#f5f5f5",
+            background: "yellow",
+            color: "black",
             padding: 20,
-            whiteSpace: "pre-wrap"
+            whiteSpace: "pre-wrap",
+            fontSize: 16,
+            borderRadius: "10px"
           }}
         >
           {answer}
@@ -193,7 +200,7 @@ export default function Home() {
       <div style={{ marginTop: 40 }}>
 
         <h3 style={{ color: "green" }}>
-          Serverless Instances' Log
+         Log
         </h3>
 
         <pre
