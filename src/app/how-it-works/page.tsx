@@ -1,6 +1,6 @@
 export default function HowItWorksPage() {
   return (
-    <div style={{ background: "green", padding: "40px", fontFamily: "Arial, sans-serif", maxWidth: "800px", margin: "auto" }}>
+    <div style={{ background: "skyblue", padding: "40px", fontFamily: "Arial, sans-serif", maxWidth: "800px", margin: "auto" }}>
       
       <h1>How This AI RAG Search - Repo Search - Works!</h1>
 
@@ -12,17 +12,22 @@ export default function HowItWorksPage() {
       </p>
 <br/>
       <h2>Pipeline Overview</h2>
-      <pre style={{ margin: "50px", background: "yellow", color: "black",fontSize: 14, padding: "20px", borderRadius: "10px", width: "65%"}}>
+      <pre style={{ margin: "50px", background: "yellow", color: "black",fontSize: 14, padding: "20px", borderRadius: "10px", width: "60%"}}>
 {`User Question
      ↓
 Note: Document Chunking & Embeddings done offline, 
-      Indexed repo/Document Chunks in PineCone VectorDB
+  Indexed repo/Document Chunks in PineCone VectorDB
      ↓
 Query Embedding → Vector Similarity Search
      ↓
 Top(K) Relevant Chunks Retrieved
      ↓
-LLM Generates Grounded RAG Answer`}
+Retrieval Augmented Prompt Created with 
+  Retrieved Chunks & User Question
+     ↓
+LLM Generates Grounded RAG Answer`
+
+}
       </pre>
 
       <h2>Step-by-Step Explanation</h2>

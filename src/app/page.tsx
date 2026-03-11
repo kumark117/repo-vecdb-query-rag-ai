@@ -156,7 +156,7 @@ export default function Home() {
         </button>
 &nbsp; &nbsp; &nbsp;
         <button
-        onClick={() => window.location.href = "/how-it-works"}
+        onClick={() => window.open("/how-it-works", "_blank")}
         style={{
           padding: "10px 18px",
           background: "#0070f3",
