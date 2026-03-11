@@ -9,6 +9,8 @@ export default function HowItWorksPage() {
         This demo implements a <b>Retrieval-Augmented Generation (RAG)</b> pipeline.
         The system retrieves relevant document fragments using vector search
         and then uses an LLM to generate a grounded answer.
+        <br/>
+        Tech Stack: Next.js · TypeScript · OpenAI · Pinecone · Vercel Serverless
       </p>
 <br/>
       <h2>Pipeline Overview</h2>
